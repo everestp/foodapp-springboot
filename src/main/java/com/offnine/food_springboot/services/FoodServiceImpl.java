@@ -18,7 +18,9 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectResponse;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -72,6 +74,31 @@ private final FoodRepo foodRepo;
         newFoodEntity = foodRepo.save(newFoodEntity);
         return convertToResponse(newFoodEntity);
     }
+
+    @Override
+    public List<FoodResponse> readFoods() {
+        List<FoodEntity> databaseEntries = foodRepo.findAll();
+         return databaseEntries.stream().map(this::convertToResponse).collect(Collectors.toList());
+    }
+
+    @Override
+    public FoodResponse readFood(String id) {
+      FoodEntity existingFood =  foodRepo.findById(id).orElseThrow(()-> new RuntimeException("Food not found"+ id));
+        return convertToResponse(existingFood);
+    }
+
+    @Override
+    public void deleteFood(String id) {
+        FoodResponse response = readFood(id);
+      String imageUrl=  response.getImageUrl();
+      imageUrl = imageUrl.substring(imageUrl.lastIndexOf("/")+1);
+      boolean isFileDelete = deleteFile(imageUrl);
+      if(isFileDelete){
+          foodRepo.deleteById(response.getId());
+      }
+
+    }
+
     private FoodEntity convertToEntity(FoodRequest request) {
         return FoodEntity.builder()
                 .name(request.getName())
