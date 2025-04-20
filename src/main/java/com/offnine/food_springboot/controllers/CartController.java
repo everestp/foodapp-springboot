@@ -26,5 +26,25 @@ if(fooId == null || fooId.isEmpty()) {
  return cartService.addToCart(req);
 
     }
+@GetMapping
+    public CartResponse getCart() {
+        return cartService.getCart();
+}
+@ResponseStatus(HttpStatus.NO_CONTENT)
+@DeleteMapping
+    public void clearCart() {
+        cartService.clearCart();
+}
+@PostMapping("/remove")
+    public  CartResponse removeFromCart(@RequestBody CartRequest req) {
+    String  fooId = req.getFoodId();
+    if(fooId == null || fooId.isEmpty()) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "FoodId not found");
+    }
+   return cartService.removeFromCart(req);
+
+
+
+}
 
 }
