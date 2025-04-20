@@ -46,7 +46,8 @@ public class FoodController {
 }
 @GetMapping("/{id}")
 public FoodResponse readFood(@PathVariable String id) {
-    return foodService.readFood(id);
+
+        return foodService.readFood(id);
 }
 @DeleteMapping("/{id}")
 @ResponseStatus(HttpStatus.NO_CONTENT)
