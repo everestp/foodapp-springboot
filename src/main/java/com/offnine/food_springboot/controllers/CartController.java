@@ -30,8 +30,9 @@ if(fooId == null || fooId.isEmpty()) {
     public CartResponse getCart() {
         return cartService.getCart();
 }
+
+    @DeleteMapping
 @ResponseStatus(HttpStatus.NO_CONTENT)
-@DeleteMapping
     public void clearCart() {
         cartService.clearCart();
 }
