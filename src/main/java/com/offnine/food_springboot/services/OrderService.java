@@ -17,4 +17,6 @@ public interface OrderService {
   void removeOrder(String orderId);
 
  List<OrderResponse> getOrdersOfAllUsers();
+
+ void  updateOrderStatus(String OrderId ,String status);
 }

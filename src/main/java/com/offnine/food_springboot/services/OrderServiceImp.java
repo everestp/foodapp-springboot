@@ -62,6 +62,15 @@ List<OrderEntity> list  = orderRepo.findByUserId(loggedInUserId);
         return list.stream().map(this::convertToResponse).collect(Collectors.toList());
     }
 
+    @Override
+    public void updateOrderStatus(String OrderId, String status) {
+        OrderEntity order = orderRepo.findById(OrderId).orElseThrow(() ->
+                new RuntimeException("Order with ID " + OrderId + " not found")
+        );
+        order.setOrderStatus(status);
+        orderRepo.save(order);
+    }
+
 
     private OrderResponse convertToResponse(OrderEntity newOrder) {
         return OrderResponse.builder()

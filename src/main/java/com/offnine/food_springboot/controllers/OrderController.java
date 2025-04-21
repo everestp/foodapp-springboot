@@ -26,9 +26,14 @@ public class OrderController {
         return resposne;
 
     }
-    @PutMapping("/{orderId}/paymentStatus")
+    @PatchMapping("/{orderId}/paymentStatus")
     public void updatePaymentStatus(@PathVariable String orderId, @RequestBody PaymentRequest paymentData) {
         orderService.updatePaymentStatus(orderId, paymentData);
+    }
+    @PatchMapping("/status/{orderId}")
+    public void updateOrderStatus(@PathVariable String orderId , @RequestParam  String status) {
+        orderService.updateOrderStatus(orderId, status);
+
     }
 
     @GetMapping
