@@ -56,7 +56,7 @@ public class SecurityConfig {
 
     private UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("*")); // Replace * for security
+        config.setAllowedOrigins(List.of("https://food-app-customer-section-react.vercel.app","*")); // Replace * for security
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "PATCH"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Correct header name
         config.setAllowCredentials(true);
