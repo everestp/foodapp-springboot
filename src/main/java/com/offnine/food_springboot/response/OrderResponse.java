@@ -17,7 +17,7 @@ public class OrderResponse {
     private String email;
     private double amount;
     private String paymentStatus;
-    private String transactionId;
+    private String transactionCode;
 private List<OrderItems> orderItems;
     private String orderStatus;
 }

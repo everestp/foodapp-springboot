@@ -21,6 +21,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     private OrderResponse createOrderwithPayment(@RequestBody OrderRequest request){
         OrderResponse resposne = orderService.createOrderWithPayment(request);
         return resposne;

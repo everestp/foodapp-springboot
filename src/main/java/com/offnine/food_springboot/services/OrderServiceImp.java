@@ -79,7 +79,7 @@ List<OrderEntity> list  = orderRepo.findByUserId(loggedInUserId);
                 .userAddress(newOrder.getUserAddress())
                 .userId(newOrder.getUserId())
                 .paymentStatus(newOrder.getPaymentStatus())
-                .transactionId(newOrder.getTransactionCode())
+                .transactionCode(newOrder.getTransactionCode())
                 .orderStatus(newOrder.getOrderStatus())
                 .email(newOrder.getEmail())
                 .orderItems(newOrder.getOrderItems())
