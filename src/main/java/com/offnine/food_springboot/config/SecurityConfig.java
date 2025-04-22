@@ -56,7 +56,7 @@ public class SecurityConfig {
 
     private UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173","https://foodapp-springboot-2.onrender.com", "http://localhost:5174","*")); // Replace * for security
+        config.setAllowedOrigins(List.of("*")); // Replace * for security
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "PATCH"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Correct header name
         config.setAllowCredentials(true);
