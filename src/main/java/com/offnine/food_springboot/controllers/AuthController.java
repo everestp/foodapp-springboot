@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 
 
-@CrossOrigin("*")
+
 public class AuthController {
 private final AuthenticationManager authenticationManager;
 private final AppUserDetailsService userDetailsService;
